@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 18:43:55 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/02 18:50:12 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/11/02 17:21:59 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/02 17:53:00 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy(void *dest, const void *src, size_t len)
-{	
-	unsigned int		i;
-	const unsigned char	*s;
-	unsigned char		*d;
+void	*ft_memchr(const void *s, int c, size_t n)
+{
+	size_t	i;
+	char	*ptr;
 
 	i = 0;
-	s = (const unsigned char *)src;
-	d = (unsigned char *)dest;
-	while (i < len)
+	ptr = (char *)s;
+	while (ptr[i] != '\0' && i < n)
 	{
-		*d = *s;
-		d++;
-		s++;
+		if (ptr[i] == c)
+		{
+			return (ptr + i);
+		}
 		i++;
 	}
-	return (dest);
+	return (NULL);
 }

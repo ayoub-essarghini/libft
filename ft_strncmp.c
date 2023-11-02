@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 18:43:55 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/02 18:50:12 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/11/02 16:03:14 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/02 17:12:15 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memcpy(void *dest, const void *src, size_t len)
-{	
-	unsigned int		i;
-	const unsigned char	*s;
-	unsigned char		*d;
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
 
 	i = 0;
-	s = (const unsigned char *)src;
-	d = (unsigned char *)dest;
-	while (i < len)
+	while (i < n && s1[i] != '\0' && s2[i] != '\0')
 	{
-		*d = *s;
-		d++;
-		s++;
+		if (s1[i] != s2[i])
+		{
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		}
 		i++;
 	}
-	return (dest);
+	return (s1[i] - s2[i]);
 }
