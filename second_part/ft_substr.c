@@ -6,23 +6,13 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:00:00 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/06 18:42:10 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/07 12:24:21 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char *ft_strncpy(char *dst,const char *src,size_t len)
-{
-	size_t i;
+	size_t	i;
 	char	*s;
 	char	d;
 
@@ -51,7 +41,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	sub = (char *)malloc((substr_len + 1) * sizeof(char));
 	if (sub == NULL)
 		return (NULL);
-	ft_strncpy(sub,s+start,substr_len);
+	ft_strncpy(sub, s + start, substr_len);
 	sub[substr_len] = '\0';
 	return (sub);
 }
