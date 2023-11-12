@@ -6,9 +6,10 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:32:00 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/04 16:15:49 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:09:04 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {

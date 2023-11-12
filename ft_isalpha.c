@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 19:08:31 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/01 16:08:41 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/10/30 20:16:35 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/12 23:58:11 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	*ft_memmove(void *dest, const void *src, size_t len )
+int	ft_isalpha(char c)
 {
-	char	*s;
-	char	*d;
-	size_t	i;
-
-	i = 0;
-	s = (char *) src;
-	d = (char *) dest;
-	if (s > d)
-	{
-		while (len-- > 0)
-			d[len] = s[len];
-	}
-	else
-	{
-		while (i < len)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	}
-	return (dest);
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
+		return (1);
+	return (0);
 }

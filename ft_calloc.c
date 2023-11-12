@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 15:09:37 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/01 16:21:09 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/11/06 12:18:02 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/12 23:55:30 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	src_len;
-	size_t	i;
+	size_t	ttl;
+	void	*buffer;
 
-	i = 0;
-	src_len = 0;
-	while (src[src_len] != '\0')
-		src_len++;
-	if (size == 0)
-		return (src_len);
-	while (i < size - 1 && src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (src_len);
+	ttl = nmemb * size;
+	buffer = malloc(ttl);
+	if (buffer == NULL)
+		return (NULL);
+	ft_bzero(buffer, ttl);
+	return (buffer);
 }

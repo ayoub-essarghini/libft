@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 12:18:02 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/06 12:27:47 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/11/07 11:40:50 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/13 00:43:26 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	*ft_memset(void *s, int c, size_t len)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t			i;
-	unsigned char	*src;
+	size_t	i;
+	char	*dst;
+	size_t	src1_len;
+	size_t	ttl_size;
 
+	ttl_size = ft_strlen(s1) + ft_strlen(s2);
 	i = 0;
-	src = (unsigned char *)s;
-	while (i < len)
-		src[i++] = (unsigned char)c;
-	return (s);
-}
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	size_t	ttl;
-	void	*buffer;
-
-	ttl = nmemb * size;
-	buffer = malloc(ttl);
-	if (buffer == NULL)
+	src1_len = ft_strlen(s1);
+	dst = (char *) malloc((ttl_size + 1) * sizeof(char));
+	if (!dst)
 		return (NULL);
-	ft_memset(buffer, 0, ttl);
-	return (buffer);
+	while (s1[i])
+	{
+		dst[i] = s1[i];
+		i++;
+	}
+	i = 0;
+	while (s2[i])
+	{
+		dst[src1_len + i] = s2[i];
+		i++;
+	}
+	dst[src1_len + i] = '\0';
+	return (dst);
 }

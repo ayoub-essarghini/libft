@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 16:24:53 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/01 16:27:15 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/10/31 14:51:26 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/13 00:16:25 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_toupper(int c)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	else
-		return (c);
+	size_t			i;
+	unsigned char	*p;
+
+	i = 0;
+	p = (unsigned char *) b;
+	while (i < len)
+		p[i++] = (unsigned char) c;
+	return (b);
 }

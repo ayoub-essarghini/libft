@@ -1,43 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 18:41:18 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/04 19:11:36 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/11/02 16:03:14 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/13 00:31:38 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_strlen(char *str)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	while (i < n && s1[i] != '\0' && s2[i] != '\0')
 	{
+		if (s1[i] != s2[i])
+		{
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+		}
 		i++;
 	}
-	return (i);
-}
-
-char	*ft_strdup(const char *s)
-{
-	char	*d;
-	int	str_len;
-	int	i;
-
-	i = 0;
-	str_len = ft_strlen(s);
-	d = (char *) malloc((str_len * sizeof(char)) + 1);
-	if (d == NULL)
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		d[i] = s[i];
-		i++;
-	}
-	d[i] = '\0';
-	return (d);
+	return (s1[i] - s2[i]);
 }

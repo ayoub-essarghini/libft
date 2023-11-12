@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:47:12 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/10/31 16:05:47 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/10/30 22:27:43 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/12 23:56:48 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	ft_bzero(void *b, size_t len)
+int	ft_isalnum(char c)
 {
-	size_t			i;
-	unsigned char	*p;
-
-	p = (unsigned char *) b;
-	i = 0;
-	while (i < len)
-	{
-		p[i++] = 0;
-	}
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
+		|| (c >= '0' && c <= '9'))
+		return (1);
+	return (0);
 }

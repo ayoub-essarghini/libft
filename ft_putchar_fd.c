@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 17:58:48 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/01 20:12:51 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/11/12 21:19:57 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/13 00:49:42 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-char	*ft_strchr(const char *s, int c)
+#include "libft.h"
+void	ft_putchar_fd(char c, int fd)
 {
-	char	*str;
-
-	str = (char *)s;
-	while (*str != c)
-	{
-		if (*str == '\0')
-		{
-			return (NULL);
-		}
-		str++;
-	}
-	return (str);
+	write(fd, &c, 1);
 }

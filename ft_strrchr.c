@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 18:43:55 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/02 18:50:12 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/11/01 20:14:05 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/13 00:36:44 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t len)
-{	
-	unsigned int		i;
-	const unsigned char	*s;
-	unsigned char		*d;
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
 
-	i = 0;
-	s = (const unsigned char *)src;
-	d = (unsigned char *)dest;
-	while (i < len)
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		*d = *s;
-		d++;
-		s++;
-		i++;
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i--;
 	}
-	return (dest);
+	return (NULL);
 }

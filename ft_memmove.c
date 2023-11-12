@@ -1,35 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 20:14:05 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/01 20:34:30 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/10/31 19:08:31 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/13 00:15:05 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_strlen(char *str)
+void	*ft_memmove(void *dest, const void *src, size_t len )
 {
-	int	i;
+	char	*s;
+	char	*d;
+	size_t	i;
 
 	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strrchr(const char *s, int c)
-{
-	int	i;
-
-	i = ft_strlen(s);
-	while (i >= 0)
+	s = (char *) src;
+	d = (char *) dest;
+	if (s > d)
 	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-		i--;
+		while (len-- > 0)
+			d[len] = s[len];
 	}
-	return (NULL);
+	else
+	{
+		while (i < len)
+		{
+			d[i] = s[i];
+			i++;
+		}
+	}
+	return (dest);
 }

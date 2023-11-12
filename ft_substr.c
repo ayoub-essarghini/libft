@@ -6,11 +6,12 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:00:00 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/07 12:24:21 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:41:57 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+static char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
 	size_t	i;
 	char	*s;

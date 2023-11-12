@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 14:51:26 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/10/31 15:02:35 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/10/31 15:47:12 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/12 23:51:55 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_bzero(void *s, size_t n)
 {
 	size_t			i;
 	unsigned char	*p;
 
+	p = (unsigned char *) s;
 	i = 0;
-	p = (unsigned char *) b;
-	while (i < len)
-		p[i++] = (unsigned char) c;
-	return (b);
+	while (i < n)
+	{
+		p[i++] = 0;
+	}
 }

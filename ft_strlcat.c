@@ -6,19 +6,10 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 10:37:54 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/06 11:44:25 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:25:11 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-size_t	ft_strlen(char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
-}
+#include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
@@ -36,7 +27,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	if (size > dst_len)
 		res = src_len + dst_len;
 	else
-	res = src_len + size;
+		res = src_len + size;
 	while (s[i] && (dst_len + 1) < size)
 	{
 		dst[dst_len] = s[i];

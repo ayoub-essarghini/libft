@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 18:05:32 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/04 18:33:55 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/11/12 22:16:27 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/13 00:50:23 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_atoi(char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
-	int	sign;
-	int	res;
 
-	sign = 1;
 	i = 0;
-	res = 0;
-	while (str[i] && str[i] == '\t' || str[i] == '\r' || str[i] == '\f'
-		|| str[i] == '\n' || str[i] == '\v' || str[i] == ' ')
+	if (!s)
+		return ;
+	while (s[i])
+	{
+		write(fd, &s[i], 1);
 		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '-' && str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-		res *= 10 + (str[i] - 48);
-	i++;
-	return (res * sign);
+	}
 }

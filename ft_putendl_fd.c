@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/30 22:27:43 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/10/30 22:33:43 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/11/12 22:34:07 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/13 00:50:50 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-int	ft_isalnum(char c)
+#include "libft.h"
+
+void	ft_putendl_fd(char *s, int fd)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')
-		|| (c >= '0' && c <= '9'))
-		return (1);
-	return (0);
+	size_t	len;
+
+	if (!s)
+		return ;
+	len = strlen(s);
+	write(fd, s, len);
+	write(fd, "\n", 1);
 }

@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/02 17:21:59 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/03 21:40:55 by aes-sarg         ###   ########.fr       */
+/*   Created: 2023/11/01 15:09:37 by aes-sarg          #+#    #+#             */
+/*   Updated: 2023/11/13 00:28:18 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	unsigned int	i;
-	unsigned char	*ptr;
-	unsigned char	c2;
+	size_t	src_len;
+	size_t	i;
 
-	c2 = (unsigned char)c;
 	i = 0;
-	ptr = (unsigned char *)s;
-	while (ptr[i] != '\0' && i < n)
+	src_len = 0;
+	if (!dst || !src)
+		return (0);
+	while (src[src_len] != '\0')
+		src_len++;
+	if (size == 0)
+		return (src_len);
+	while (i < size - 1 && src[i] != '\0')
 	{
-		if (ptr[i] == c2)
-		{
-			return (ptr + i);
-		}
+		dst[i] = src[i];
 		i++;
 	}
-	return (NULL);
+	dst[i] = '\0';
+	return (src_len);
 }

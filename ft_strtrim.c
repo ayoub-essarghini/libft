@@ -6,9 +6,25 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:35:17 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/08 10:26:54 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/13 00:46:13 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
+
+static char     *ft_strncpy(char *dst, const char *src, size_t len)
+{
+        size_t  i;
+        char    *s;
+        char    d;
+
+        s = (char *) src;
+        d = (char *) dst;
+        i = 0;
+        while (src[i] != '\0' && i < len)
+                d[i] = s[i];
+                i++;
+        return (dst);
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
