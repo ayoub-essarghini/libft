@@ -6,13 +6,14 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 13:07:22 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/13 00:29:58 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/13 17:36:16 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] != '\0')

@@ -6,88 +6,87 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:55:22 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/12 17:04:56 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/13 13:56:31 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "libft.h"
 
-static int	ft_count_subs(char const *s, char c)
+static int	free_arr(char **arr, int size)
 {
-	int	count;
+	while (size--)
+		free(arr[size]);
+	return (-1);
+}
 
-	count = 0;
-	while (*s)
+static int	count_strs(const char *str, char c)
+{
+	int	i;
+	int	words;
+
+	words = 0;
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (*s == c)
-		{
-			count++;
-		}
-		s++;
+		if ((str[i + 1] == c || str[i + 1] == '\0') == 1
+			&& (str[i] == c || str[i] == '\0') == 0)
+			words++;
+		i++;
 	}
-	return (count);
+	return (words);
 }
 
-static char	*ft_strndup(char const *s, int len)
+static void	write_word(char *dest, const char *src, char c)
 {
-	char	*b;
+	int	i;
 
-	b = (char *)malloc((len + 1) * sizeof(char));
-	if (!b)
+	i = 0;
+	while ((src[i] == c || src[i] == '\0') == 0)
 	{
-		free(b);
-		return (NULL);
+		dest[i] = src[i];
+		i++;
 	}
-	b = strncpy(b, s, len);
-	b[len] = '\0';
-	return (b);
+	dest[i] = '\0';
 }
 
-static void	ft_vars_init(char const *s,char const *start,int *count,char *c)
+static int	write_split(char **split, const char *str, char c)
 {
-	  i = 0;
-        start = s;
-        count = ft_count_subs(s, c) + 1;
+	int	i;
+	int	j;
+	int	word;
 
-}
-
-char	**ft_split(char const *s, char c)
-{
-	char		**strs;
-	char const	*start;
-	int			sub_len;
-	int			count;
-	int			i;
-
-	ft_vars_init(&s, &start, &count, &c);
-	strs = (char **)malloc(count * sizeof(char *));
-	if (!strs)
-		return (NULL);
-	s = start;
-	while (*s)
+	word = 0;
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (*s == c)
-		{
-			sub_len = s - start;
-			strs[i] = ft_strndup(start, sub_len);
-			start = s + 1;
+		if ((str[i] == c || str[i] == '\0') == 1)
 			i++;
+		else
+		{
+			j = 0;
+			while ((str[i + j] == c || str[i + j] == '\0') == 0)
+				j++;
+			split[word] = (char *)malloc(sizeof(char) * (j + 1));
+			if (!split[word])
+				return (free_arr(split, word - 1));
+			write_word(split[word], str + i, c);
+			i += j;
+			word++;
 		}
-		s++;
 	}
-	strs[i] = strdup(start);
-	strs[count] = 0;
-	return (strs);
+	return (0);
 }
 
-int main()
+char	**ft_split(const char *str, char c)
 {
-	char const *s;
-       s = "Hello ,World, How,Are you?";
-	char c =',';
-	char **arr;
-       arr = ft_split(s,c);
-	printf("%s",arr[0]);
-return (0);
+	char	**res;
+	int		len;
+
+	len = count_strs(str, c);
+	res = (char **)malloc(sizeof(char *) * (len + 1));
+	if (!res)
+		return (NULL);
+	res[len] = 0;
+	if (write_split(res, str, c) == -1)
+		return (NULL);
+	return (res);
 }

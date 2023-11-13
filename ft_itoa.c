@@ -6,7 +6,7 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 18:52:03 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/13 00:47:20 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:31:50 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -29,7 +29,6 @@ static int	count_digit(int n)
 char	*ft_itoa(int n)
 {
 	int			d_size;
-	int			i;
 	char		*res;
 	long int	num;
 

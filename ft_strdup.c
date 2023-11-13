@@ -6,7 +6,7 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 18:41:18 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/13 00:21:31 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:16:26 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -14,8 +14,8 @@
 char	*ft_strdup(const char *s)
 {
 	char	*d;
-	int	str_len;
-	int	i;
+	int		str_len;
+	int		i;
 
 	i = 0;
 	str_len = ft_strlen(s);
