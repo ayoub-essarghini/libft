@@ -6,31 +6,33 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 19:08:31 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/13 00:15:05 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/13 21:14:41 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	*ft_memmove(void *dest, const void *src, size_t len )
 {
-	char	*s;
-	char	*d;
-	size_t	i;
+	unsigned char	*s;
+	unsigned char	*d;
+	size_t			i;
 
 	i = 0;
-	s = (char *) src;
-	d = (char *) dest;
-	if (s > d)
+	s = (unsigned char *) src;
+	d = (unsigned char *) dest;
+	if (d == NULL && s == NULL && (len || len == 0))
+		return (0);
+	if (d < s)
 	{
-		while (len-- > 0)
-			d[len] = s[len];
+		ft_memcpy(d, s, len);
 	}
-	else
+	if (d >= s)
 	{
-		while (i < len)
+		i = len;
+		while (i > 0)
 		{
+			i--;
 			d[i] = s[i];
-			i++;
 		}
 	}
 	return (dest);
