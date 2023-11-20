@@ -18,10 +18,10 @@ void	*ft_memmove(void *dest, const void *src, size_t len )
 	size_t			i;
 
 	i = 0;
+	if (!dest || !src)
+		return (NULL);
 	s = (unsigned char *) src;
 	d = (unsigned char *) dest;
-	if (d == NULL || s == NULL || (len == 0))
-		return (dest);
 	if (d < s)
 	{
 		ft_memcpy(d, s, len);

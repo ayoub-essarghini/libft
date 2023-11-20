@@ -6,29 +6,21 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 18:43:55 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/13 15:17:50 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/20 16:14:59 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t len)
-{	
-	unsigned int		i;
-	const unsigned char	*s;
-	unsigned char		*d;
+{
+	size_t	i;
 
-	i = 0;
-	if ((dest == src) || len == 0)
-		return (dest);
 	if (!dest && !src)
 		return (0);
-	s = (const unsigned char *)src;
-	d = (unsigned char *)dest;
+	i = 0;
 	while (i < len)
 	{
-		*d = *s;
-		d++;
-		s++;
+		((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
 		i++;
 	}
 	return (dest);

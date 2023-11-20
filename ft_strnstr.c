@@ -6,34 +6,35 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 16:38:52 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/13 00:33:39 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:59:33 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	little_len;
 	size_t	i;
 	size_t	j;
-	char	*bg;
-	char	*sub_str;
+	size_t	k;
 
-	sub_str = (char *) little;
-	bg = (char *) big;
-	little_len = ft_strlen(sub_str);
 	i = 0;
-	if (little_len == 0 || big == little)
-		return (bg);
-	while (bg[i] != '\0' && i < len)
+	if (!big || !little)
+		return (NULL);
+	if (big[i] == '\0')
+		return ((char *)big);
+	while (big[i] != '\0' && i < len)
 	{
+		k = i;
 		j = 0;
-		while (bg[i + j] != '\0' && sub_str[j] != '\0'
-			&& bg[i + j] == sub_str[j] && i + j < len)
+		while (little[j] != '\0' && big[k] != '\0'
+			&& big[k] == little[j] && k < len)
+		{
 			j++;
-		if (little_len == j)
-			return (bg + i);
-	i++;
+			k++;
+		}
+		if (little[j] == '\0')
+			return (&(((char *)big)[i]));
+		i++;
 	}
-	return (0);
+	return (NULL);
 }

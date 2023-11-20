@@ -6,35 +6,32 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 11:40:50 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/13 00:43:26 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/20 15:34:50 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
+#include <stdio.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	char	*dst;
-	size_t	src1_len;
-	size_t	ttl_size;
+	char	*new_str;
+	int		i;
+	int		j;
 
-	ttl_size = ft_strlen(s1) + ft_strlen(s2);
-	i = 0;
-	src1_len = ft_strlen(s1);
-	dst = (char *) malloc((ttl_size + 1) * sizeof(char));
-	if (!dst)
+	if (!s1 || !s2)
 		return (NULL);
-	while (s1[i])
-	{
-		dst[i] = s1[i];
-		i++;
-	}
+	new_str = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!new_str)
+		return (NULL);
 	i = 0;
-	while (s2[i])
+	while (s1[i] != '\0')
 	{
-		dst[src1_len + i] = s2[i];
+		new_str[i] = s1[i];
 		i++;
 	}
-	dst[src1_len + i] = '\0';
-	return (dst);
+	j = 0;
+	while (s2[j] != '\0')
+		new_str[i++] = s2[j++];
+	new_str[i] = '\0';
+	return (new_str);
 }
