@@ -6,7 +6,7 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:55:22 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/20 16:59:16 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/20 18:44:23 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -82,7 +82,7 @@ char	**ft_split(const char *str, char c)
 	int		len;
 
 	if (!str)
-		return (0);
+		return (NULL);
 	len = count_strs(str, c);
 	res = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!res)
@@ -91,4 +91,4 @@ char	**ft_split(const char *str, char c)
 	if (write_split(res, str, c) == -1)
 		return (NULL);
 	return (res);
-
+}
