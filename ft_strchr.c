@@ -6,25 +6,21 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 17:58:48 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/13 15:54:59 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:27:37 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*src;
+	int	i;
 
-	if (!s)
-		return (NULL);
-	src = (char *)s;
-	while (*src != c)
+	i = 0;
+	while (s[i] || s[i] == (char)c)
 	{
-		if (*src == '\0')
-		{
-			return (NULL);
-		}
-		src++;
+		if ((char)c == s[i])
+			return ((char *)s + i);
+		i++;
 	}
-	return (src);
+	return (0);
 }

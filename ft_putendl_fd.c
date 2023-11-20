@@ -6,7 +6,7 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 22:34:07 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/13 15:32:16 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:15:12 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -19,5 +19,5 @@ void	ft_putendl_fd(char *s, int fd)
 		return ;
 	len = ft_strlen(s);
 	write(fd, s, len);
-	write(fd, '\n', 1);
+	write(fd, "\n", 1);
 }

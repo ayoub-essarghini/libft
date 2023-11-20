@@ -6,89 +6,103 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 11:55:22 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/20 18:44:23 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:33:07 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-static int	free_arr(char **arr, int size)
-{
-	while (size--)
-		free(arr[size]);
-	return (-1);
-}
-
-static int	count_strs(const char *str, char c)
+static char	**ft_free(char **s, int j)
 {
 	int	i;
-	int	words;
 
-	words = 0;
 	i = 0;
-	while (str[i] != '\0')
+	while (i < j)
 	{
-		if ((str[i + 1] == c || str[i + 1] == '\0') == 1
-			&& (str[i] == c || str[i] == '\0') == 0)
-			words++;
+		free(s[i]);
 		i++;
 	}
-	return (words);
+	free(s);
+	return (NULL);
 }
 
-static void	write_word(char *dest, const char *src, char c)
+static int	count_words(char const *s, char c)
 {
 	int	i;
+	int	cmp;
+	int	vrf;
 
 	i = 0;
-	while ((src[i] == c || src[i] == '\0') == 0)
+	cmp = 0;
+	vrf = 0;
+	while (s[i])
 	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-}
-
-static int	write_split(char **split, const char *str, char c)
-{
-	int	i;
-	int	j;
-	int	word;
-
-	word = 0;
-	i = 0;
-	while (str[i] != '\0')
-	{
-		if ((str[i] == c || str[i] == '\0') == 1)
-			i++;
-		else
+		if (s[i] != c && vrf == 0)
 		{
-			j = 0;
-			while ((str[i + j] == c || str[i + j] == '\0') == 0)
-				j++;
-			split[word] = (char *)malloc(sizeof(char) * (j + 1));
-			if (!split[word])
-				return (free_arr(split, word - 1));
-			write_word(split[word], str + i, c);
-			i += j;
-			word++;
+			cmp++;
+			vrf = 1;
 		}
+		else if (s[i] == c)
+			vrf = 0;
+		i++;
 	}
-	return (0);
+	return (cmp);
 }
 
-char	**ft_split(const char *str, char c)
+static char	*ft_word(const char *str, int start, int end)
 {
-	char	**res;
-	int		len;
+	char	*word;
+	int		i;
 
-	if (!str)
+	i = 0;
+	word = malloc(end - start + 1);
+	if (!word)
+		return (0);
+	while (start < end)
+	{
+		word[i] = str[start];
+		i++;
+		start++;
+	}
+	word[i] = '\0';
+	return (word);
+}
+
+static char	**ft_sep_word(const char *str, char c, int l)
+{
+	int		i;
+	char	**p;
+	int		start;
+	int		j;
+
+	i = 0;
+	j = 0;
+	start = 0;
+	p = (char **)malloc(sizeof(char *) * (l + 1));
+	if (!p)
 		return (NULL);
-	len = count_strs(str, c);
-	res = (char **)malloc(sizeof(char *) * (len + 1));
-	if (!res)
+	while (str[i] && j < l)
+	{
+		while (str[i++] == c)
+			start = i;
+		while (str[i] != c && str[i])
+			i++;
+		p[j] = ft_word(str, start, i);
+		if (!p[j])
+			return (ft_free(p, j));
+		j++;
+	}
+	p[j] = NULL;
+	return (p);
+}
+
+char	**ft_split(char const *s, char c)
+{
+	char	**w;
+	int		h;
+
+	if (s == NULL)
 		return (NULL);
-	res[len] = 0;
-	if (write_split(res, str, c) == -1)
-		return (NULL);
-	return (res);
+	h = count_words(s, c);
+	w = ft_sep_word(s, c, h);
+	return (w);
 }

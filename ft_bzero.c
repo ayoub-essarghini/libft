@@ -6,7 +6,7 @@
 /*   By: aes-sarg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:47:12 by aes-sarg          #+#    #+#             */
-/*   Updated: 2023/11/12 23:51:55 by aes-sarg         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:18:15 by aes-sarg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -16,8 +16,6 @@ void	ft_bzero(void *s, size_t n)
 	size_t			i;
 	unsigned char	*p;
 
-	if (!s)
-		return ;
 	p = (unsigned char *) s;
 	i = 0;
 	while (i < n)
